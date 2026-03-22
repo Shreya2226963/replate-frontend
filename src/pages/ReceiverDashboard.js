@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './ReceiverDashboard.css';
 
 const ReceiverDashboard = () => {
@@ -9,17 +9,13 @@ const ReceiverDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
-  const [showMap, setShowMap] = useState(false);
-  const [currentDonorLocation, setCurrentDonorLocation] = useState(null);
-  const [currentReceiverLocation, setCurrentReceiverLocation] = useState(null);
-  const [selectedFoodItem, setSelectedFoodItem] = useState(null);
   const [navigating, setNavigating] = useState(false);
 
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
   const BACKEND_URL = 'https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app';
 
-  const fetchFood = async (location = '') => {
+  const fetchFood = useCallback(async (location = '') => {
     try {
       setLoading(true);
       setError('');
@@ -45,9 +41,9 @@ const ReceiverDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [BACKEND_URL, token]);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = useCallback(async () => {
     try {
       if (!userId) return;
       const res = await fetch(`${BACKEND_URL}/api/recommendations/receivers/${userId}`, {
@@ -64,9 +60,9 @@ const ReceiverDashboard = () => {
       console.error('Recommendations API error:', err);
       setRecommendations([]);
     }
-  };
+  }, [BACKEND_URL, userId, token]);
 
-  const fetchOptimizedRoute = async () => {
+  const fetchOptimizedRoute = useCallback(async () => {
     try {
       if (!userId) return;
       const res = await fetch(`${BACKEND_URL}/api/food/route/${userId}`, {
@@ -81,7 +77,16 @@ const ReceiverDashboard = () => {
       console.error('Route error:', err);
       setOptimizedRoute([]);
     }
-  };
+  }, [BACKEND_URL, userId, token]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      await fetchFood();
+      fetchRecommendations();
+      fetchOptimizedRoute();
+    };
+    loadData();
+  }, [fetchFood, fetchRecommendations, fetchOptimizedRoute]);
 
   const getCurrentLocation = () => {
     return new Promise((resolve, reject) => {
@@ -160,7 +165,6 @@ const ReceiverDashboard = () => {
     const destStr = `${destination.lat},${destination.lng}`;
     const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originStr}&destination=${destStr}&travelmode=driving`;
     
-    console.log('Opening Google Maps:', mapsUrl);
     window.open(mapsUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -176,11 +180,8 @@ const ReceiverDashboard = () => {
   };
 
   const showRouteConfirmation = async (foodItem) => {
-    setSelectedFoodItem(foodItem);
-    
     try {
       const receiverLocation = await getCurrentLocation();
-      setCurrentReceiverLocation(receiverLocation);
       
       const donorLocation = await getDonorLocation(foodItem);
       
@@ -193,11 +194,8 @@ const ReceiverDashboard = () => {
         if (claimWithoutMap) {
           handleClaim(foodItem._id);
         }
-        setShowMap(false);
         return;
       }
-      
-      setCurrentDonorLocation(donorLocation);
       
       const distance = calculateDistance(
         receiverLocation.lat,
@@ -317,15 +315,6 @@ const ReceiverDashboard = () => {
       alert(err.message);
     }
   };
-
-  useEffect(() => {
-    const loadData = async () => {
-      await fetchFood();
-      fetchRecommendations();
-      fetchOptimizedRoute();
-    };
-    loadData();
-  }, []);
 
   const formatExpiryDate = (expiryDate) => {
     if (!expiryDate) {

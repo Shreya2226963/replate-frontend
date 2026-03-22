@@ -9,6 +9,7 @@ const DonationForm = () => {
   const [location, setLocation] = useState('');
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+  const BACKEND_URL = 'https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,16 +22,16 @@ const DonationForm = () => {
     }
 
     const formData = new FormData();
-    formData.append('title', title);          // ✅ match backend field name
+    formData.append('title', title);
     formData.append('quantity', quantity);
     formData.append('expiryDate', expiryDate);
     formData.append('location', location);
     if (image) formData.append('image', image);
 
     try {
-      const res = await fetch('http://localhost:5000/api/food', {  // ✅ correct path
+      const res = await fetch(`${BACKEND_URL}/api/food`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token}` }, // backend requires auth
+        headers: { Authorization: `Bearer ${token}` },
         body: formData
       });
 

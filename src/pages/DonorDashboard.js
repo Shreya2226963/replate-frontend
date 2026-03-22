@@ -30,7 +30,7 @@ const DonorDashboard = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/food/donor', {
+        const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/donor', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -45,7 +45,7 @@ const DonorDashboard = () => {
   useEffect(() => {
     const fetchReminder = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/food/reminders', {
+        const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/reminders', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -112,7 +112,7 @@ const DonorDashboard = () => {
     if (!title?.trim()) return;
     
     try {
-      const res = await fetch('http://localhost:5000/api/food/ai/expiry-predict', {
+      const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/ai/expiry-predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,7 +141,7 @@ const DonorDashboard = () => {
 
     if (fieldName === 'title' && fieldValue?.trim()) {
       try {
-        const res = await fetch('http://localhost:5000/api/food/ai/classify', {
+        const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/ai/classify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -233,7 +233,7 @@ const DonorDashboard = () => {
         if (d.image) formData.append('images', d.image);
       });
 
-      const res = await fetch('http://localhost:5000/api/food/bulk', {
+      const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/bulk', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData
@@ -293,7 +293,7 @@ const DonorDashboard = () => {
         fd.append('image', donationData.image);
       }
 
-      const res = await fetch(`http://localhost:5000/api/food/${editingId}`, {
+      const res = await fetch(`https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/${editingId}`, {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` },
         body: fd
@@ -317,7 +317,7 @@ const DonorDashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this donation?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/food/${id}`, {
+      const res = await fetch(`https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -337,7 +337,7 @@ const DonorDashboard = () => {
 
   const approveReminder = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/food/reminders/${id}/approve`, {
+      const res = await fetch(`https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/food/reminders/${id}/approve`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -724,7 +724,7 @@ const DonorDashboard = () => {
             <div key={listing._id} className="donation-card">
               {listing.image && (
                 <img
-                  src={`http://localhost:5000/${listing.image}`}
+                  src={`https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/${listing.image}`}
                   alt={listing.title}
                   className="donation-image"
                 />

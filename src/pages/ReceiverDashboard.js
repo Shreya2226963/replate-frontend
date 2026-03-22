@@ -17,21 +17,22 @@ const ReceiverDashboard = () => {
 
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId');
+  const BACKEND_URL = 'https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app';
 
   const fetchFood = async (location = '') => {
     try {
       setLoading(true);
       setError('');
       const url = location
-        ? `http://localhost:5000/api/food?location=${encodeURIComponent(location)}`
-        : `http://localhost:5000/api/food`;
+        ? `${BACKEND_URL}/api/food?location=${encodeURIComponent(location)}`
+        : `${BACKEND_URL}/api/food`;
 
       const res = await fetch(url);
       if (!res.ok) throw new Error('Failed to fetch food listings');
       const data = await res.json();
       setFoodList(data);
 
-      const resClaimed = await fetch('http://localhost:5000/api/food/receiver', {
+      const resClaimed = await fetch(`${BACKEND_URL}/api/food/receiver`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (resClaimed.ok) {
@@ -49,7 +50,7 @@ const ReceiverDashboard = () => {
   const fetchRecommendations = async () => {
     try {
       if (!userId) return;
-      const res = await fetch(`http://localhost:5000/api/recommendations/receivers/${userId}`, {
+      const res = await fetch(`${BACKEND_URL}/api/recommendations/receivers/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -68,7 +69,7 @@ const ReceiverDashboard = () => {
   const fetchOptimizedRoute = async () => {
     try {
       if (!userId) return;
-      const res = await fetch(`http://localhost:5000/api/food/route/${userId}`, {
+      const res = await fetch(`${BACKEND_URL}/api/food/route/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -249,7 +250,7 @@ const ReceiverDashboard = () => {
 
   const handleClaim = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/food/${id}/claim`, {
+      const res = await fetch(`${BACKEND_URL}/api/food/${id}/claim`, {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -267,7 +268,7 @@ const ReceiverDashboard = () => {
   const handleQuickClaim = async (id) => {
     if (window.confirm('Claim this item without navigation?')) {
       try {
-        const res = await fetch(`http://localhost:5000/api/food/${id}/claim`, {
+        const res = await fetch(`${BACKEND_URL}/api/food/${id}/claim`, {
           method: 'PATCH',
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -303,7 +304,7 @@ const ReceiverDashboard = () => {
 
   const handlePickup = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/food/${id}/pickup`, {
+      const res = await fetch(`${BACKEND_URL}/api/food/${id}/pickup`, {
         method: 'PATCH',
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -370,7 +371,7 @@ const ReceiverDashboard = () => {
             foodList.map((item) => (
               <div key={item._id} className="food-card">
                 {item.image ? (
-                  <img src={`http://localhost:5000/${item.image}`} alt={item.title} className="food-image" />
+                  <img src={`${BACKEND_URL}/${item.image}`} alt={item.title} className="food-image" />
                 ) : (
                   <div className="food-image placeholder">No Image</div>
                 )}
@@ -413,7 +414,7 @@ const ReceiverDashboard = () => {
           claimedList.map((item) => (
             <div key={item._id} className="food-card claimed">
               {item.image ? (
-                <img src={`http://localhost:5000/${item.image}`} alt={item.title} className="food-image" />
+                <img src={`${BACKEND_URL}/${item.image}`} alt={item.title} className="food-image" />
               ) : (
                 <div className="food-image placeholder">No Image</div>
               )}

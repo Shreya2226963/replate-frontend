@@ -30,7 +30,7 @@ const SignupPage = () => {
     setErrors({});
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch('https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, role, location }),
@@ -148,6 +148,5 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
-
 
 

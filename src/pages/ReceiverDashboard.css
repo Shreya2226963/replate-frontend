@@ -1,0 +1,851 @@
+/* ===== Global Container ===== */
+.receiver-container {
+  text-align: center;
+  padding: 2.5rem;
+  background: #dde9d3;
+  min-height: 100vh;
+  animation: fadeIn 1s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Dashboard Title ===== */
+.dashboard-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2e4f6f;
+  margin: 1.5rem 0 2rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.dashboard-title::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #4caf50, #3498db);
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #2e4f6f;
+  margin: 2rem 0 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 3px;
+  background: linear-gradient(90deg, #4caf50, #3498db);
+  margin: 0.4rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===== Predictive AI Strip ===== */
+.predictive-strip {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease;
+}
+
+.predictive-card {
+  flex: 1;
+  background: linear-gradient(135deg, #ffffff, #f9fbff);
+  border: 1px solid #dde6f2;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  cursor: pointer;
+}
+
+.predictive-card:hover {
+  transform: translateY(-4px);
+}
+
+.predictive-card .icon {
+  font-size: 2rem;
+  background: #eef4ff;
+  padding: 12px;
+  border-radius: 12px;
+  color: #2c3e50;
+}
+
+.predictive-card .content h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.predictive-card .content p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* AI Preview Styles */
+.ai-preview {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.ai-preview-item {
+  display: block;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.ai-preview-score,
+.ai-preview-distance,
+.ai-preview-availability {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.ai-preview-score {
+  background: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+}
+
+.ai-preview-distance {
+  background: rgba(52, 152, 219, 0.15);
+  color: #2980b9;
+}
+
+.ai-preview-availability {
+  background: rgba(155, 89, 182, 0.15);
+  color: #8e44ad;
+}
+
+.map-indicator {
+  font-size: 0.9rem;
+  color: #4285F4;
+  background: rgba(66, 133, 244, 0.15);
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+/* ===== Filter Bar ===== */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filter-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.filter-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+  outline: none;
+}
+
+.filter-btn,
+.reset-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.filter-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.reset-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.reset-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* ===== Grid Layouts ===== */
+.food-list,
+.route-list,
+.forecast-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ===== Food Card ===== */
+.food-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 1.2rem;
+  width: 280px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  position: relative;
+}
+
+.food-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.food-card.claimed {
+  border: 2px solid #2ecc71;
+}
+
+.food-card.recommended {
+  border: 2px solid #ffd166;
+  background: linear-gradient(135deg, #fffbea, #ffffff);
+}
+
+/* ===== Route Card ===== */
+.route-card {
+  background: #fdfdfd;
+  border: 2px solid #3498db;
+  border-radius: 14px;
+  padding: 1rem;
+  width: 260px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.route-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* ===== Forecast Card ===== */
+.forecast-card {
+  background: linear-gradient(135deg, #f0f9ff, #ffffff);
+  border: 2px solid #4caf50;
+  border-radius: 14px;
+  padding: 1rem;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.forecast-card h3 {
+  color: #2e4f6f;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* ===== Headings & Text ===== */
+.food-card h3 {
+  margin-top: 0.5rem;
+  color: #2e4f6f;
+  font-size: 1.3rem;
+  font-weight: 600;
+  animation: slideInLeft 0.8s ease;
+}
+
+.food-card p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  animation: slideInRight 0.8s ease;
+}
+
+.food-card p strong {
+  color: #2c3e50;
+}
+
+/* Location hints in food cards */
+.location-hint {
+  color: #4285F4;
+  font-size: 0.85rem;
+  margin: 5px 0;
+  font-style: italic;
+  padding-left: 8px;
+  border-left: 2px solid #4285F4;
+  background: rgba(66, 133, 244, 0.05);
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* ===== Image ===== */
+.food-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+  animation: zoomIn 0.8s ease;
+}
+
+.food-image.placeholder {
+  background-color: #d9e6f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f6f6f;
+  font-weight: bold;
+}
+
+/* ===== Buttons ===== */
+.claim-btn,
+.pickup-btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.claim-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.claim-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.claim-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.pickup-btn {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.pickup-btn:hover {
+  background-color: #d68910;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ===== Badges ===== */
+.claimed-badge,
+.pickup-badge,
+.recommended-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 10px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.claimed-badge {
+  background: #2ecc71;
+  color: #fff;
+}
+
+.pickup-badge {
+  background: #27ae60;
+  color: #fff;
+}
+
+.recommended-badge {
+  background: #ffd166;
+  color: #3a3a3a;
+}
+
+/* Map-ready badges */
+.map-ready,
+.general-location {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 8px 0;
+  animation: fadeInUp 0.8s ease;
+}
+
+.map-ready {
+  background: linear-gradient(135deg, #34A853, #0F9D58);
+  color: white;
+  border: 1px solid #2e7d32;
+}
+
+.general-location {
+  background: linear-gradient(135deg, #FBBC05, #FBAF00);
+  color: white;
+  border: 1px solid #f57c00;
+}
+
+/* Error and loading states */
+.error-text {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 500px;
+  border-left: 3px solid #e74c3c;
+  font-size: 1rem;
+}
+
+.loading {
+  color: #3498db;
+  font-size: 1.1rem;
+  padding: 20px;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.no-food,
+.no-claims {
+  color: #7f8c8d;
+  font-size: 1rem;
+  padding: 20px;
+  background: rgba(127, 140, 141, 0.1);
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+/* ===== EXPIRY DATE STYLES ===== */
+.expiry-valid {
+  color: #27ae60;
+  font-weight: 600;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.expiry-expired {
+  color: #e74c3c;
+  font-weight: 600;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.expiry-unknown {
+  color: #f39c12;
+  font-weight: 600;
+  background: rgba(243, 156, 18, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.85rem;
+}
+
+.expiry-hint {
+  display: block;
+  font-size: 11px;
+  color: #7f8c8d;
+  margin-top: 4px;
+}
+
+/* ===== NEW STYLES FOR ROUTE NAVIGATION FEATURE ===== */
+
+/* Claim Buttons Container */
+.claim-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Claim Button with Route (Blue) */
+.claim-btn-route {
+  flex: 2;
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.claim-btn-route:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+.claim-btn-route:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Quick Claim Button (Green) */
+.claim-btn-simple {
+  flex: 1;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.claim-btn-simple:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.claim-btn-simple:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Navigate Button (Orange) */
+.navigate-btn {
+  background: linear-gradient(135deg, #FF9800, #F57C00);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  width: 100%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.navigate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+/* Route Info Card */
+.route-info-card {
+  background: linear-gradient(135deg, #e3f2fd, #bbdef5);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  border-left: 4px solid #2196F3;
+}
+
+.route-info-card p {
+  margin: 5px 0;
+  font-size: 0.85rem;
+}
+
+.route-distance {
+  font-weight: bold;
+  color: #1976D2;
+  font-size: 0.9rem;
+}
+
+.route-time {
+  color: #FF9800;
+  font-weight: 500;
+}
+
+/* Map Container (for embedded map if needed) */
+.map-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.map-content {
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.close-map-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-map-btn:hover {
+  transform: scale(1.1);
+  background: #c0392b;
+}
+
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Route Summary Bar */
+.route-summary {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.route-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.route-summary-icon {
+  font-size: 1.2rem;
+}
+
+.route-summary-value {
+  font-weight: bold;
+  color: #FF9800;
+}
+
+/* Navigation Loading State */
+.nav-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Adjustments for New Buttons */
+@media (max-width: 600px) {
+  .claim-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .claim-btn-route,
+  .claim-btn-simple {
+    width: 100%;
+  }
+  
+  .route-summary {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .map-content {
+    width: 95%;
+    height: 70%;
+  }
+  
+  .close-map-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* ===== End of New Styles ===== */
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .predictive-strip {
+    flex-direction: column;
+  }
+  
+  .receiver-container {
+    padding: 1.5rem;
+  }
+  
+  .food-list,
+  .route-list,
+  .forecast-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .food-card,
+  .route-card,
+  .forecast-card {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-input {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-title {
+    font-size: 1.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .predictive-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .predictive-card .icon {
+    margin-bottom: 8px;
+  }
+  
+  .filter-bar {
+    flex-direction: column;
+  }
+  
+  .filter-input,
+  .filter-btn,
+  .reset-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+

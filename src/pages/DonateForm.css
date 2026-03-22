@@ -1,0 +1,35 @@
+.donate-container {
+  text-align: center;
+  padding: 2rem;
+  background-color: #dde9d3;
+  min-height: 100vh;
+}
+
+.donate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: auto;
+}
+
+.donate-form input,
+.donate-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.donate-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.donate-form button:hover {
+  background-color: #45a049;
+}

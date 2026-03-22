@@ -1,0 +1,88 @@
+.landing-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fefefe;
+}
+
+.logo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Splash animation */
+.logo-animate {
+  animation: scaleFade 3s ease-in-out forwards;
+}
+
+@keyframes scaleFade {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Static logo after splash */
+.logo-static {
+  opacity: 1;
+}
+
+/* Buttons fade in */
+.fade-in {
+  animation: fadeInButtons 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInButtons {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cta-row {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn.outline {
+  background-color: transparent;
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+}

@@ -7,6 +7,7 @@ const MultiDonationForm = () => {
   ]);
 
   const token = localStorage.getItem('token');
+  const BACKEND_URL = 'https://replate-backend-6ford7ws3-aiml23018-2763s-projects.vercel.app';
 
   const handleChange = (index, e) => {
     const { name, value, files } = e.target;
@@ -37,7 +38,7 @@ const MultiDonationForm = () => {
       if (d.image) formData.append('images', d.image);
     });
 
-    const res = await fetch('http://localhost:5000/api/food/bulk', {
+    const res = await fetch(`${BACKEND_URL}/api/food/bulk`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` },
       body: formData
@@ -63,7 +64,7 @@ const MultiDonationForm = () => {
             <textarea name="description" placeholder="Description" value={donation.description} onChange={(e) => handleChange(index, e)} />
             <input type="text" name="quantity" placeholder="Quantity" value={donation.quantity} onChange={(e) => handleChange(index, e)} required />
             <input type="text" name="location" placeholder="Location" value={donation.location} onChange={(e) => handleChange(index, e)} required />
-            <input type="date" name="expiryDate" value={donation.expiryDate} onChange={(e) => handleChange(index, e)} />
+            <input type="date" name="expiryDate" value={donation.expiryDate} onChange={(e) => handleChange(index, e)} required />
             <input type="file" name="image" accept="image/*" onChange={(e) => handleChange(index, e)} />
             <button type="button" className="remove-btn" onClick={() => removeDonation(index)}>🗑️ Remove</button>
           </div>
